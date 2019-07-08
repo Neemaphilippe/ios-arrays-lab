@@ -386,15 +386,6 @@ Given an Array of Arrays of Ints, find the Array of Ints with the largest sum:
 Input: `[[2,4,1],[3,0],[9,3]]`
 
 Output: `[9,3]`
-
-
-## Question 21
-
-Given an Array of Tuples of type `(Int, Int)`, create an array containing all the tuples where the first Int is equal to the second Int.
-
-Input: `[(4,2), (-3,-3), (1,1), (3,9)]`
-
-Output: `[(-3,-3), (1,1)]`
 ```
 var numArray = [[2,4,1],[3,0],[9,3]]
 var sum1 = 0
@@ -408,6 +399,16 @@ for array in numArray {
 print(sum1)
 sum1 = 0
 }
+```
+
+## Question 21
+
+Given an Array of Tuples of type `(Int, Int)`, create an array containing all the tuples where the first Int is equal to the second Int.
+
+Input: `[(4,2), (-3,-3), (1,1), (3,9)]`
+
+Output: `[(-3,-3), (1,1)]`
+```
 ```
 
 ## Question 22
