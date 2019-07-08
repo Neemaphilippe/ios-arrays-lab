@@ -8,12 +8,31 @@ Create an array of strings called `colors` that contain "orange", "red", "yellow
 
 Then, using array subscripting and string interpolation, print out the String `"orange, yellow, and lavender are some of my favorite colors"`.
 
+```
+let arrayColor = ["orange","yellow","turquoise","lavendar"]
+
+print("\(arrayColor[0]) , \(arrayColor[1]), \(arrayColor[3])", "are some of my favorite colors")
+```
+
 
 ## Question 2
 
 Remove "Illinois" and "Kansas" from the array below.
 
 `var westernStates = ["California", "Oregon", "Washington", "Idaho", "Illinois", "Kansas"]`
+```
+var westernStates = ["California", "Oregon", "Washington", "Idaho", "Illinois", "Kansas"]
+var newArray = [String]()
+var ill = "Illinois"
+var kans = "Kansas"
+
+for i in westernStates {
+    if i != ill && i != kans {
+        newArray.append(i)
+    }
+}
+print(newArray)
+```
 
 
 ## Question 3
@@ -22,7 +41,20 @@ Iterate through the array below. For each state, print out the name of the state
 
 `let moreStates = ["Hawaii", "New Mexico", "Alaska", "Montana", "Texas", "New York", "Florida"]`
 
+```
+let moreStates = ["Hawaii", "New Mexico", "Alaska", "Montana", "Texas", "New York", "Florida"]
+var haw = "Hawaii"
+var ala = "Alaska"
 
+
+for i in moreStates {
+    if i == haw || i == ala {
+    print("\(i) is not in the US")
+    continue
+}
+print("\(i) is in the US")
+}
+```
 ## Question 4
 
 Print out how many non-whitespace characters are in `myString`:
@@ -32,8 +64,24 @@ Print out how many non-whitespace characters are in `myString`:
 Iterate through the array below. For each sentence, print out how many non-whitespace characters are in it.
 
 `let myFavoriteQuotes = ["To be or not to be, that is the question.", "The only source of knowledge is experience.", "Mr. Gorbachev, tear down this wall!", "Four score and twenty years ago..."]`
+```
+var myFavQuotesArr = myFavoriteQuotes[0]
+var space = " "
+var currentWord = ""
+var count = 0
 
+for sentence in myFavoriteQuotes {
+    for letters in sentence {
+    if letters != " " {
+    count += 1
 
+        }
+    }
+print("there are \(count) in sentence: \(sentence) ")
+count = 0
+
+}
+```
 ## Question 5
 
 Iterate through `garden` and place any 🌷 that you find into the `basket`. Replace any 🌷 that you pick up with `"dirt"`. Then print how many 🌷 are in your `basket`.
@@ -42,7 +90,21 @@ Iterate through `garden` and place any 🌷 that you find into the `basket`. Rep
 var garden = ["dirt","🌷","dirt","🌷","dirt","dirt","🌷","dirt","🌷","dirt"]
 var basket = [String]()
 ```
+```
+var garden = ["dirt","🌷","dirt","🌷","dirt","dirt","🌷","dirt","🌷","dirt"]
+var basket = [String]()
+var flowerCount = 0
+var index = 0
 
+for (index, objects) in garden.enumerated() {
+if objects == "🌷" {
+flowerCount += 1
+basket.append("🌷")
+garden[index] = "dirt"
+}
+}
+print("There are \(flowerCount) flowers in my basket \(basket) but my garden is just dirt now!! \(garden)")
+```
 ## Question 6
 
 The below array represents an unfinished batting lineup for a baseball team. **You, the coach,** need to make some last minute changes:
@@ -53,7 +115,25 @@ The below array represents an unfinished batting lineup for a baseball team. **Y
 - Put "Reyes" to bat 8th instead.
 
 `var battingLineup = ["Reyes", "Jeter", "Ramirez", "Pujols","Griffey","Thomas","Jones", "Rodriguez"]`
+```
+var battingLineup = ["Reyes", "Jeter", "Ramirez", "Pujols","Griffey","Thomas","Jones", "Rodriguez"]
 
+for (index, player) in battingLineup.enumerated() {
+if player == "Jeter" {
+battingLineup[index] = "Tejada"
+
+}
+if player == "Thomas"{
+battingLineup[index] = "Guerrero"
+}
+if index == 7 {
+battingLineup[index] = "Reyes"
+}
+}
+battingLineup.append("Suzuki")
+battingLineup.removeFirst()
+print(battingLineup)
+```
 
 ## Question 7
 
@@ -87,6 +167,16 @@ target = 3
 
 //false
 ```
+```
+var num : [Int] = [5,10, 20, 32, 59, 15, 28]
+let target: Int = 32
+
+for number in num {
+if number == target {
+print("The target number \(target) is equal to \(number) in the array")
+}
+}
+```
 
 
 ## Question 8
@@ -98,8 +188,17 @@ let arrayOfNumbers: [Int] = (1...100).map{ _ in Int.random(in: 0...200)}.map{Int
 
 //This creates an array of 100 numbers in between 0 and 200.  For now, you don't need to worry about how it does that.
 ```
+```
+let arrayOfNumbers: [Int] = (1...100).map{ _ in Int.random(in: 0...200)}.map{Int($0)}
+var greatestNumber = 0
 
-
+for number in arrayOfNumbers {
+    if number == 200 {
+    greatestNumber = number    
+    }
+}
+print(greatestNumber)
+```
 ## Question 9
 
 Find the smallest value in an array of Int.  Do not use the built in min() method.
@@ -109,29 +208,68 @@ let arrayOfNumbers: [Int] = (1...100).map{ _ in Int.random(in: 0...200)}.map{Int
 
 //This creates an array of 100 numbers in between 0 and 200.  For now, you don't need to worry about how it does that.
 ```
+```
+let arrayOfNumbers: [Int] = (1...100).map{ _ in Int.random(in: 0...200)}.map{Int($0)}
+var smallestNumber = 0
 
-
+for number in arrayOfNumbers {
+    if number <= 0 {
+    smallestNumber = number
+    }
+}
+print(smallestNumber)
+```
 ## Question 10
 
 Iterate through `secondListOfNumbers`, and print out all the odd numbers.
 
 `var secondListOfNumbers = [19,13,14,19,101,10000,141,404]`
+```
+var secondListOfNumbers = [19,13,14,19,101,10000,141,404]
+var oddNumbers: [Int] = []
 
+for numbers in secondListOfNumbers {
+if numbers % 2 != 0 {
+oddNumbers.append(numbers)
+}
+}
+print(oddNumbers)
+```
 
 ## Question 11
 
 Iterate through `thirdListOfNumbers`, and print out the sum.
 
 `var thirdListOfNumbers = [11, 26, 49, 61, 25, 40, 74, 3, 22, 23]`
+```
+var thirdListOfNumbers = [11, 26, 49, 61, 25, 40, 74, 3, 22, 23]
+var sum = 0
 
+for number in thirdListOfNumbers {
+    if number >= 0 {
+    sum += number
+    }
+}
+print(sum)
+```
 
 ## Question 12
 
 Iterate through `thirdListOfNumbers`, and print out the sum of all the even numbers.
 
 `var thirdListOfNumbers = [11, 26, 49, 61, 25, 40, 74, 3, 22, 23]`
+```
+var thirdListOfNumbers = [11, 26, 49, 61, 25, 40, 74, 3, 22, 23]
+var sum = 0
+var evenNumbers: [Int] = []
 
-
+for number in thirdListOfNumbers {
+    if number % 2 == 0 {
+    sum += number
+    }
+}
+print(sum)
+```
 ## Question 13
 
 Append every Int that appears in both `listOne` and `listTwo` to the `sharedElements` array. Then print **how many Ints** are shared.
@@ -140,6 +278,22 @@ Append every Int that appears in both `listOne` and `listTwo` to the `sharedElem
 var listOne = [28, 64, 7, 96, 13, 32, 94, 11, 80, 68]
 var listTwo = [18, 94, 48, 6, 42, 68, 79, 76, 13, 7]
 var sharedElements = [Int]()
+```
+```
+var listOne = [28, 64, 7, 96, 13, 32, 94, 11, 80, 68]
+var listTwo = [18, 94, 48, 6, 42, 68, 79, 76, 13, 7]
+var sharedElements = [Int]()
+var sharedElementsCount = 0
+
+for number1 in listOne{
+    for number2 in listTwo{
+        if number1 == number2 {
+        sharedElementsCount += 1
+        sharedElements.append(number1)
+        }
+    }
+}
+print(sharedElementsCount)
 ```
 
 
@@ -157,14 +311,33 @@ var noDupeList: [Int] = []
 Find the second smallest number in an Array of Ints
 
 `let arrayOfNumbers: [Int] = (1...100).map{ _ in Int.random(in: 0...200)}.map{Int($0)}`
+```
+let arrayOfNumbers: [Int] = (1...100).map{ _ in Int.random(in: 0...200)}.map{Int($0)}
+var secondLowest = 0
 
-
+for number in arrayOfNumbers {
+    if number == 2 {
+    secondLowest += number
+    }
+}
+print(secondLowest)
+```
 ## Question 16
 
 If we list all the natural numbers below 10 that are multiples of 3 or 5, we get 3, 5, 6 and 9. The sum of these multiples is 23.
 
 Find the sum of all the multiples of 3 or 5 below 1000.
+```
+var sum = 0
+var multArray: [Int] = []
 
+for number in 0...999 {
+    if number % 3 == 0 || number % 5 == 0 {
+    sum += number
+    }
+}
+print(sum)
+```
 
 ## Question 17
 
@@ -189,8 +362,23 @@ Given an array of Strings, find the the String with the most "a"s in it.
 input: `["apes", "abba", "apple"]`
 
 output: `"abba"`
+```
+var arcticArray =  ["apes", "abba", "apple"]
+var aCount = 0
+var aCountArr = [Int()]
 
+for arctic in arcticArray {
+    for letters in arctic  {
+    if letters == "a" {
+    aCount += 1
+    }
+}
+aCountArr.append(aCount)
+aCount = 0
+}
 
+print("There are \(aCountArr.max() ?? 0) a's in \(arcticArray[1]) containing the most a's ")
+```
 ## Question 20
 
 Given an Array of Arrays of Ints, find the Array of Ints with the largest sum:
@@ -207,7 +395,20 @@ Given an Array of Tuples of type `(Int, Int)`, create an array containing all th
 Input: `[(4,2), (-3,-3), (1,1), (3,9)]`
 
 Output: `[(-3,-3), (1,1)]`
+```
+var numArray = [[2,4,1],[3,0],[9,3]]
+var sum1 = 0
 
+for array in numArray {
+    for number in array {
+    if number > -1 {
+    sum1 += number
+    }
+}
+print(sum1)
+sum1 = 0
+}
+```
 
 ## Question 22
 
